@@ -43,14 +43,21 @@ function App() {
       <textarea ref={infoRef} cols="120" rows="20"></textarea>
       <p>Now ask it a question...</p>
       <input ref={questionRef} onKeyPress={answerQ}></input>
-      <h3>Top Answers</h3>
-      {answer ?  answer.slice(0,3).map((value, count) => {
+     
+      {answer ?  
+      <>
+       <h3>Top Answers</h3>
+      {answer.slice(0,3).map((value, count) => {
         return (
         <>
         <p>{`Answer ${count + 1}: ${value.text}`}</p>
         </>
         )
-      }) : ""}
+      }) }
+      </>
+      : 
+      
+      ""}
       
       </>
     }
