@@ -1,5 +1,6 @@
 
 const DetectiveForm = () => {
+    // add state/store info
 
     return (
         <>

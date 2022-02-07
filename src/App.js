@@ -4,6 +4,31 @@ import GuessForm from './components/GuessForm';
 import QandA from './components/QandA';
 
 function App() {
+
+  const createScenario = () => {
+    const suspects = ['colonel mustard', 'professor plum', 'reverend green', 'mrs white', 'mrs peacock', 'miss scarlett'];
+    const weapons = ['dagger', 'candlestick', 'revolver', 'rope', 'lead pipe', 'spanner'];
+    const rooms = ['hall', 'lounge', 'dining room', 'kitchen', 'ball room', 'conservatory', 'billiard room', 'library', 'study'];
+    // return the killer, weapon, room etc
+    // then from there can have another method that creates what witnesses saw, 
+    // excluding the killer or summat incriminating 4 them 
+    const murder = {'killer': suspects[~~Math.random()*suspects.length], 
+    'weapon': weapons[~~Math.random()*weapons.length], 
+    'room': rooms[~~Math.random()*rooms.length]};
+
+    return murder;
+  }
+
+  const createWitnessInfo = () => {
+    const murder = createScenario();
+    const killer = murder.killer;
+    const weapon = murder.weapon;
+    const room = murder.room;
+
+    
+  }
+  // console.log(createScenario());
+
   // used wiki random article to get some placeholder info for initial experiments
   const witness1 = `Rose's costume design career began in the West End theatres of London,[2] following time spent on various theatre projects as a teenager in Windsor. She studied stage management while attending the London Academy of Music and Dramatic Art. Due to her fluency in Italian, she acquired a job as an assistant and buyer for the high fashion label Fiorucci in Milan, which introduced her to important people in the fashion and film industries.[3]
 
