@@ -21,6 +21,7 @@ function App() {
     'weapon': weapons[~~(Math.random()*weapons.length)], 
     'room': rooms[~~(Math.random()*rooms.length)]};
     setMurder(murder);
+    console.log(murder)
     return murder;
   }
 
