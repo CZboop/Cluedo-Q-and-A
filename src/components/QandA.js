@@ -2,22 +2,18 @@ import * as tf from '@tensorflow/tfjs';
 import * as qna from '@tensorflow-models/qna';
 import React, {useState, useEffect, useRef} from 'react';
 
-const QandA =() => {
+const QandA =({name, info}) => {
   const [model, setModel] = useState("");
-  const infoRef = useRef(null);
   const questionRef = useRef(null);
   const [answer, setAnswer] = useState("");
   
   const loadModel = async () => {
     const qnaModel = await qna.load();
     setModel(qnaModel);
-    // console.log(model)
   }
 
   const answerQ = async (event) => {
     if (model !== null && event.which === 13){
-      console.log("submitted")
-      const info = infoRef.current.value;
       const question = questionRef.current.value;
 
       const answers = await model.findAnswers(question, info);
@@ -33,14 +29,12 @@ const QandA =() => {
 
   return (
     <div className="App">
-      <h1>Question and Answer Bot</h1>
+      <h1>{name}</h1>
       {model == null ?
       <p>Loading...</p>
       :
       <>
-      <p>Give it some information about yourself</p>
-      <textarea ref={infoRef} cols="120" rows="20"></textarea>
-      <p>Now ask it a question...</p>
+      <p>Ask them a question about what they saw...</p>
       <input ref={questionRef} onKeyPress={answerQ}></input>
      
       {answer ?  
