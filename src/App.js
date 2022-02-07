@@ -1,4 +1,5 @@
 import './App.css';
+import DetectiveForm from './components/DetectiveForm';
 import QandA from './components/QandA';
 
 function App() {
@@ -23,9 +24,11 @@ In the elections to the 2006 Parliament of Catalonia, he was elected deputy for 
   
   return (
     <>
+    <h1>Cluedo - Bot Interrogation</h1>
     <QandA name={"Witness #1"} info={witness1}/>
     <QandA name={"Witness #2"} info={witness2}/>
-    <QandA />
+    <QandA name={"Witness #3"}/>
+    <DetectiveForm />
     </>
   )
 }

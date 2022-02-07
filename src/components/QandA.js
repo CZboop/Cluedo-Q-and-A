@@ -29,7 +29,7 @@ const QandA =({name, info}) => {
 
   return (
     <div className="App">
-      <h1>{name}</h1>
+      <h2>{name}</h2>
       {model == null ?
       <p>Loading...</p>
       :
