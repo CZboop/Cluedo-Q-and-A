@@ -1,5 +1,6 @@
 import './App.css';
 import DetectiveForm from './components/DetectiveForm';
+import GuessForm from './components/GuessForm';
 import QandA from './components/QandA';
 
 function App() {
@@ -29,6 +30,7 @@ In the elections to the 2006 Parliament of Catalonia, he was elected deputy for 
     <QandA name={"Witness #2"} info={witness2}/>
     <QandA name={"Witness #3"}/>
     <DetectiveForm />
+    <GuessForm />
     </>
   )
 }
