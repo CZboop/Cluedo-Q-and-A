@@ -14,11 +14,13 @@ function App() {
   const [witness3, setWitness3] = useState("");
   const [witness4, setWitness4] = useState("");
 
+  const [murder, setMurder] = useState(null);
+
   const createScenario = () => {
     const murder = {'killer': suspects[~~(Math.random()*suspects.length)], 
     'weapon': weapons[~~(Math.random()*weapons.length)], 
     'room': rooms[~~(Math.random()*rooms.length)]};
-
+    setMurder(murder);
     return murder;
   }
 
@@ -66,7 +68,7 @@ function App() {
     <QandA name={"Witness #3"} info={witness3}/>
     <QandA name={"Witness #4"} info={witness4}/>
     <DetectiveForm />
-    <GuessForm />
+    <GuessForm murder={murder}/>
     </>
   )
 }
