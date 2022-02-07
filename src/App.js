@@ -2,16 +2,17 @@ import './App.css';
 import DetectiveForm from './components/DetectiveForm';
 import GuessForm from './components/GuessForm';
 import QandA from './components/QandA';
+import React, {useState, useEffect, useRef} from 'react';
 
 function App() {
   const suspects = ['colonel mustard', 'professor plum', 'reverend green', 'mrs white', 'mrs peacock', 'miss scarlett'];
   const weapons = ['dagger', 'candlestick', 'revolver', 'rope', 'lead pipe', 'spanner'];
   const rooms = ['hall', 'lounge', 'dining room', 'kitchen', 'ball room', 'conservatory', 'billiard room', 'library', 'study'];
 
-  let witness1 = "";
-  let witness2 = "";
-  let witness3 = "";
-  let witness4 = "";
+  const [witness1, setWitness1] = useState("");
+  const [witness2, setWitness2] = useState("");
+  const [witness3, setWitness3] = useState("");
+  const [witness4, setWitness4] = useState("");
 
   const createScenario = () => {
     const murder = {'killer': suspects[~~(Math.random()*suspects.length)], 
@@ -32,6 +33,7 @@ function App() {
     for (let i=0; i<suspects.length; i++){
       if (suspects[i]!=killer){
         witnesses[~~(Math.random()*witnesses.length)] += ` ${suspects[i]} was with me the entire night! `
+        
       }
     }
     for (let i=0; i<rooms.length; i++){
@@ -45,16 +47,17 @@ function App() {
       }
     }
 
-    witness1 = witnesses[0];
-    witness2 = witnesses[1];
-    witness3 = witnesses[2];
-    witness4 = witnesses[3];
+    setWitness1(witnesses[0]);
+    setWitness2(witnesses[1]);
+    setWitness3(witnesses[2]);
+    setWitness4(witnesses[3]);
 
   }
-  // console.log(createScenario());
-  createWitnessInfo();
-  console.log(witness2 )
 
+  useEffect(() => {
+    createWitnessInfo();
+  }, [])
+  
   return (
     <>
     <h1>Cluedo - Bot Interrogation</h1>

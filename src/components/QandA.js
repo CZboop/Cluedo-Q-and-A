@@ -18,6 +18,7 @@ const QandA =({name, info}) => {
 
       const answers = await model.findAnswers(question, info);
       console.log(answers)
+      console.log(info)
       setAnswer(answers);
     }
 
