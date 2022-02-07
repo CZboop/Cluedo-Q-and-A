@@ -1,3 +1,4 @@
+import * as tf from '@tensorflow/tfjs';
 import * as qna from '@tensorflow-models/qna';
 import React, {useState, useEffect, useRef} from 'react';
 
