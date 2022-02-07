@@ -35,19 +35,25 @@ const QandA =({name, info}) => {
       <p>Loading...</p>
       :
       <>
-      <p>Ask them a question about what they saw...</p>
+      <p>Ask them a question</p>
       <input ref={questionRef} onKeyPress={answerQ}></input>
      
       {answer ?  
       <>
-       <h3>Top Answers</h3>
-      {answer.slice(0,3).map((value, count) => {
+      {answer.length > 0 ?
+      <>
+       <h3>Answer</h3>
+      {answer.slice(0,1).map((value, count) => {
         return (
         <>
-        <p>{`Answer ${count + 1}: ${value.text}`}</p>
+        <p>{`${value.text}`}</p>
         </>
         )
       }) }
+      </>
+      :
+      <h3>No answer</h3>
+    }
       </>
       : 
       

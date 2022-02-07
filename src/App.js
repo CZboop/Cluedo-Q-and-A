@@ -31,24 +31,62 @@ function App() {
     const weapon = murder.weapon;
     const room = murder.room;
 
-    const witnesses = ["", "", "", ""];
+    const suspectWitnesses = [];
+    const weaponWitnesses = [];
+    const roomWitnesses = [];
 
-    for (let i=0; i<suspects.length; i++){
-      if (suspects[i]!=killer){
-        witnesses[~~(Math.random()*witnesses.length)] += ` ${suspects[i]} was with me the entire night! `
-        
-      }
+    let witnesses = "on the night in question. s0 was locked in the r0 alone all night so they must be innocent, and I am \
+    completely sure of that 100%. Guests arrived at around 6pm. s1 entered the r1 at 6.30 and stayed there working on their laptop \
+    from then on. the murder took place after midnight. the w0 barely moved all night, the w0 fell under \
+    the table hours before the murder and then stayed there until morning. the w1 could not have been the murder weapon, \
+    because it was thrown out of the window into a passing truck well before the murder took place \
+    it was such a shame to ruin a lovely evening. s2 ended up leaving early, yes s2 left around 10pm. \
+    the other guests seemed to be having fun. \
+    there was talk of a seance but that does not seem to have had anything to do with the murder. the r2 \
+    was empty the whole time. the door to the r2 had been locked by the host before the party started, and it stayed locked. \
+    the w2 was being used as a paperweight for some important documents, so no one touched the w2. the only time the r3 \
+    was used was when the entire group had drinks there after everyone arrived. so the r3 was not the murder scene \
+    the police had been called after an argument. at the time of the murder the police were in the r4. \
+    the r5 was sealed off at around 11.30pm, after a skunk entered it. at the time of the murder, the r5 was \
+    still heavily barricaded. s3 had to take a call around ten minutes before the murder, and was in their car on the phone \
+    when the victim was killed. s3 was holding the w3 when they got the call, and took it to the car with them while \
+    the murder took place. \
+    the r6 was under close surveillance all night, and it was only used as a cloakroom. s4 fell asleep after dinner and \
+    only woke up after the murder. the w4 was accidentally incinerated before the murder. r7 was sealed off for a previous \
+    murder and no one could enter";
+
+    let innocentSuspects = suspects.filter(sus => sus != killer);
+    console.log(innocentSuspects)
+    let i = 0;
+    while (innocentSuspects.length > 0){
+      console.log(i);
+      let currentSus = innocentSuspects[~~(Math.random()*innocentSuspects.length)]
+      witnesses = witnesses.replaceAll( `s${i}`, currentSus)
+      innocentSuspects = innocentSuspects.filter(sus => sus!=currentSus);
+      i++;
     }
-    for (let i=0; i<rooms.length; i++){
-      if (rooms[i]!=room){
-        witnesses[~~(Math.random()*witnesses.length)] += ` I was in the ${rooms[i]} and it definitely didn't happen there `
-      }
+
+    let innocentWeapons = weapons.filter(wep => wep != weapon);
+    i = 0;
+    while (innocentWeapons.length > 0){
+      console.log(i);
+      let currentWep = innocentWeapons[~~(Math.random()*innocentWeapons.length)]
+      witnesses = witnesses.replaceAll( `w${i}`, currentWep)
+      innocentWeapons = innocentWeapons.filter(wep => wep!=currentWep);
+      i++;
     }
-    for (let i=0; i<weapons.length; i++){
-      if (weapons[i]!=weapon){
-        witnesses[~~(Math.random()*witnesses.length)] += ` I was the only one that used the ${weapons[i]} so it wasn't the murder weapon `
-      }
+    // console.log(witnesses)
+
+    let innocentRooms = rooms.filter(rm => rm != room);
+    i = 0;
+    while (innocentRooms.length > 0){
+      console.log(i);
+      let currentRoom = innocentRooms[~~(Math.random()*innocentRooms.length)]
+      witnesses = witnesses.replaceAll( `r${i}`, currentRoom)
+      innocentRooms = innocentRooms.filter(rm => rm!=currentRoom);
+      i++;
     }
+    console.log(witnesses)
 
     setWitness1(witnesses[0]);
     setWitness2(witnesses[1]);
@@ -64,6 +102,8 @@ function App() {
   return (
     <>
     <h1>Cluedo - Bot Interrogation</h1>
+    <h3>A murder took place at a recent party. There were four smart cameras in operation. 
+      Their video was wiped, but they may still remember some details...</h3>
     <QandA name={"Witness #1"} info={witness1}/>
     <QandA name={"Witness #2"} info={witness2}/>
     <QandA name={"Witness #3"} info={witness3}/>
