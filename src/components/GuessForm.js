@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
+import './GuessForm.css';
 
 const GuessForm = ({murder}) => {
     const [killerGuess, setKillerGuess] = useState(null);
@@ -13,7 +14,7 @@ const GuessForm = ({murder}) => {
             'killer': killerGuess, 
             'weapon': weaponGuess, 
             'room': roomGuess};
-        if (guess.killer==murder.killer && guess.weapon==murder.weapon && guess.room==murder.room){
+        if (guess.killer===murder.killer && guess.weapon===murder.weapon && guess.room===murder.room){
             setGuessResult("Correct!");
         }
         else {
@@ -35,9 +36,12 @@ const GuessForm = ({murder}) => {
 
     return (
      
-        <>
+        <div className='guessform-container'>
         <form onSubmit={handleGuessSubmit}>
         <h2>J'Accuse</h2>
+        <h4>Submit your accusation</h4>
+
+        <div className='select-elem'>
         <label>Killer: </label>
         <select onChange={handleKillerChange}>
             <option value="">~~~Select a suspect~~~</option>
@@ -48,7 +52,9 @@ const GuessForm = ({murder}) => {
             <option value="miss scarlett">Miss Scarlett</option>
             <option value="mrs white">Mrs White</option>
         </select>
+        </div>
 
+        <div className='select-elem'>
         <label>Weapon: </label>
         <select onChange={handleWeaponChange}>
             <option value="">~~~Select a weapon~~~</option>
@@ -59,7 +65,9 @@ const GuessForm = ({murder}) => {
             <option value="lead pipe">Lead Pipe</option>
             <option value="spanner">Spanner</option>
         </select>
+        </div>
 
+        <div className='select-elem'>
         <label>Room: </label>
         
         <select onChange={handleRoomChange}>
@@ -74,10 +82,12 @@ const GuessForm = ({murder}) => {
             <option value="library">Library</option>
             <option value="study">Study</option>
         </select>
+        </div>
+
         <input type="submit"></input>
         </form>
         <h2>{guessResult}</h2>
-        </>
+        </div>
 
     )
 }
