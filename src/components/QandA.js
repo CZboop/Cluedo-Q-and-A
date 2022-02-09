@@ -6,6 +6,10 @@ const QandA =({name, info}) => {
   const [model, setModel] = useState("");
   const questionRef = useRef(null);
   const [answer, setAnswer] = useState("");
+
+  const idk = ["I don't know", "I don't recall", "No comment", "I don't know anything about that",
+  "I can't remember", "I can't help you answer that", "No idea", "Your guess is as good as mine"
+];
   
   const loadModel = async () => {
     const qnaModel = await qna.load();
@@ -52,7 +56,7 @@ const QandA =({name, info}) => {
       }) }
       </>
       :
-      <h3>No answer</h3>
+      <h3>{idk[~~(Math.random()*idk.length)]}</h3>
     }
       </>
       : 
