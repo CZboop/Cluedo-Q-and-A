@@ -22,8 +22,6 @@ const QandA =({name, info}) => {
       const question = questionRef.current.value;
 
       const answers = await model.findAnswers(question, info);
-      console.log(answers)
-      console.log(info)
       setAnswer(answers);
     }
 

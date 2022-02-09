@@ -21,7 +21,6 @@ function App() {
     'weapon': weapons[~~(Math.random()*weapons.length)], 
     'room': rooms[~~(Math.random()*rooms.length)]};
     setMurder(murder);
-    console.log(murder)
     return murder;
   }
 
@@ -52,10 +51,8 @@ function App() {
     murder and no one could enter";
 
     let innocentSuspects = suspects.filter(sus => sus !== killer);
-    console.log(innocentSuspects)
     let i = 0;
     while (innocentSuspects.length > 0){
-      console.log(i);
       let currentSus = innocentSuspects[~~(Math.random()*innocentSuspects.length)]
       witnesses = witnesses.replaceAll( `s${i}`, currentSus)
       innocentSuspects = innocentSuspects.filter(sus => sus !== currentSus);
@@ -65,24 +62,20 @@ function App() {
     let innocentWeapons = weapons.filter(wep => wep !== weapon);
     i = 0;
     while (innocentWeapons.length > 0){
-      console.log(i);
       let currentWep = innocentWeapons[~~(Math.random()*innocentWeapons.length)]
       witnesses = witnesses.replaceAll( `w${i}`, currentWep)
       innocentWeapons = innocentWeapons.filter(wep => wep !== currentWep);
       i++;
     }
-    // console.log(witnesses)
 
     let innocentRooms = rooms.filter(rm => rm !== room);
     i = 0;
     while (innocentRooms.length > 0){
-      console.log(i);
       let currentRoom = innocentRooms[~~(Math.random()*innocentRooms.length)]
       witnesses = witnesses.replaceAll( `r${i}`, currentRoom)
       innocentRooms = innocentRooms.filter(rm => rm !== currentRoom);
       i++;
     }
-    console.log(witnesses)
 
     const witnessSplit = witnesses.split("*")
 
@@ -90,8 +83,6 @@ function App() {
     setWitness2(witnessSplit[1]);
     setWitness3(witnessSplit[2]);
     setWitness4(witnessSplit[3]);
-    
-    console.log("witness 3: " + witness3);
 
   }
 
