@@ -2,7 +2,7 @@ import './App.css';
 import DetectiveForm from './components/DetectiveForm';
 import GuessForm from './components/GuessForm';
 import QandA from './components/QandA';
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -32,10 +32,6 @@ function App() {
     const weapon = murder.weapon;
     const room = murder.room;
 
-    const suspectWitnesses = [];
-    const weaponWitnesses = [];
-    const roomWitnesses = [];
-
     let witnesses = "on the night in question. s0 was locked in the r0 alone all night so they must be innocent, and I am \
     completely sure of that 100%. Guests arrived at around 6pm. s1 entered the r1 at 6.30 and stayed there working on their laptop \
     from then on. the murder took place after midnight. the w0 barely moved all night, the w0 fell under \
@@ -56,35 +52,35 @@ function App() {
     only woke up after the murder. the w4 was accidentally incinerated before the murder. r7 was sealed off for a previous \
     murder and no one could enter";
 
-    let innocentSuspects = suspects.filter(sus => sus != killer);
+    let innocentSuspects = suspects.filter(sus => sus !== killer);
     console.log(innocentSuspects)
     let i = 0;
     while (innocentSuspects.length > 0){
       console.log(i);
       let currentSus = innocentSuspects[~~(Math.random()*innocentSuspects.length)]
       witnesses = witnesses.replaceAll( `s${i}`, currentSus)
-      innocentSuspects = innocentSuspects.filter(sus => sus!=currentSus);
+      innocentSuspects = innocentSuspects.filter(sus => sus !== currentSus);
       i++;
     }
 
-    let innocentWeapons = weapons.filter(wep => wep != weapon);
+    let innocentWeapons = weapons.filter(wep => wep !== weapon);
     i = 0;
     while (innocentWeapons.length > 0){
       console.log(i);
       let currentWep = innocentWeapons[~~(Math.random()*innocentWeapons.length)]
       witnesses = witnesses.replaceAll( `w${i}`, currentWep)
-      innocentWeapons = innocentWeapons.filter(wep => wep!=currentWep);
+      innocentWeapons = innocentWeapons.filter(wep => wep !== currentWep);
       i++;
     }
     // console.log(witnesses)
 
-    let innocentRooms = rooms.filter(rm => rm != room);
+    let innocentRooms = rooms.filter(rm => rm !== room);
     i = 0;
     while (innocentRooms.length > 0){
       console.log(i);
       let currentRoom = innocentRooms[~~(Math.random()*innocentRooms.length)]
       witnesses = witnesses.replaceAll( `r${i}`, currentRoom)
-      innocentRooms = innocentRooms.filter(rm => rm!=currentRoom);
+      innocentRooms = innocentRooms.filter(rm => rm !== currentRoom);
       i++;
     }
     console.log(witnesses)
@@ -106,10 +102,11 @@ function App() {
   
   return (
     <>
-    <h1>Cluedo - Bot Interrogation</h1>
+    <h1>CLUEDO: INTERROGATION</h1>
+    <Navbar />
     <h3>A murder took place at a recent party. There were four smart cameras in operation. 
       Their video was wiped, but they may still remember some details...</h3>
-    <Navbar />
+    
     <QandA name={"Witness #1"} info={witness1}/>
     <QandA name={"Witness #2"} info={witness2}/>
     <QandA name={"Witness #3"} info={witness3}/>

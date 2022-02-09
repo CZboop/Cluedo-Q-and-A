@@ -1,0 +1,46 @@
+.detective-form-container{
+    display: flex;
+    justify-content: space-evenly;
+    border: 2px solid aqua;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+}
+
+.form-elem{
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid aqua;
+    padding-left: 1em;
+}
+
+input[type='checkbox']{
+    margin-right: 0;
+    align-self: end;
+    justify-self: end;
+}
+
+h4{
+    justify-self: end;
+}
+
+.suspects-container{
+    display: grid;
+    align-self: start;
+
+}
+.weapons-container{
+    display: grid;
+    align-self: start;
+
+
+}
+.rooms-container{
+    display: grid;
+    align-self: start;
+
+
+}
