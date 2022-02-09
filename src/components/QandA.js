@@ -1,6 +1,7 @@
 import * as tf from '@tensorflow/tfjs';
 import * as qna from '@tensorflow-models/qna';
 import React, {useState, useEffect, useRef} from 'react';
+import './QandA.css'
 
 const QandA =({name, info}) => {
   const [model, setModel] = useState("");
@@ -40,14 +41,14 @@ const QandA =({name, info}) => {
       :
       <>
       <p>Ask them a question</p>
-      <input ref={questionRef} onKeyPress={answerQ}></input>
+      <input ref={questionRef} onKeyPress={answerQ} size='35'></input>
      
       {answer ?  
       <>
       {answer.length > 0 ?
       <>
        <h3>Answer</h3>
-      {answer.slice(0,1).map((value, count) => {
+      {answer.slice(0,1).map((value) => {
         return (
         <>
         <p>{`${value.text}`}</p>

@@ -102,15 +102,17 @@ function App() {
   
   return (
     <>
-    <h1>CLUEDO: INTERROGATION</h1>
-    <Navbar />
-    <h3>A murder took place at a recent party. There were four smart cameras in operation. 
+    <h1>CLUEDO</h1>
+    <h2 className='subheading'>Interrogation</h2>
+    {/* <Navbar /> */}
+    <h3 className='intro'>A murder took place at a recent party. There were four smart cameras in operation. 
       Their video was wiped, but they may still remember some details...</h3>
-    
-    <QandA name={"Witness #1"} info={witness1}/>
-    <QandA name={"Witness #2"} info={witness2}/>
-    <QandA name={"Witness #3"} info={witness3}/>
-    <QandA name={"Witness #4"} info={witness4}/>
+    <div className='witness-container'>
+      <QandA name={"Witness #1"} info={witness1}/>
+      <QandA name={"Witness #2"} info={witness2}/>
+      <QandA name={"Witness #3"} info={witness3}/>
+      <QandA name={"Witness #4"} info={witness4}/>
+    </div>
     <DetectiveForm />
     <GuessForm murder={murder}/>
     </>
