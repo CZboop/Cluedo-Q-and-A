@@ -4,6 +4,7 @@ const GuessForm = ({murder}) => {
     const [killerGuess, setKillerGuess] = useState(null);
     const [weaponGuess, setWeaponGuess] = useState(null);
     const [roomGuess, setRoomGuess] = useState(null);
+    const [guessResult, setGuessResult] = useState("");
 
     const handleGuessSubmit = (e) => {
         e.preventDefault();
@@ -13,13 +14,10 @@ const GuessForm = ({murder}) => {
             'weapon': weaponGuess, 
             'room': roomGuess};
         if (guess.killer==murder.killer && guess.weapon==murder.weapon && guess.room==murder.room){
-            console.log(guess)
-            console.log("correct");
+            setGuessResult("Correct!");
         }
         else {
-            console.log(guess)
-            console.log(murder)
-            console.log("incorrect");
+            setGuessResult("Incorrect");
         }
     }
 
@@ -78,6 +76,7 @@ const GuessForm = ({murder}) => {
         </select>
         <input type="submit"></input>
         </form>
+        <h2>{guessResult}</h2>
         </>
 
     )
