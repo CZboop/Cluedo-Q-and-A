@@ -3,7 +3,6 @@ import DetectiveForm from './components/DetectiveForm';
 import GuessForm from './components/GuessForm';
 import QandA from './components/QandA';
 import React, {useState, useEffect} from 'react';
-import Navbar from './components/Navbar';
 
 function App() {
   const suspects = ['colonel mustard', 'professor plum', 'reverend green', 'mrs white', 'mrs peacock', 'miss scarlett'];
@@ -104,9 +103,9 @@ function App() {
     <>
     <h1>CLUEDO</h1>
     <h2 className='subheading'>Interrogation</h2>
-    {/* <Navbar /> */}
     <h3 className='intro'>A murder took place at a recent party. There were four smart cameras in operation. 
       Their video was wiped, but they may still remember some details...</h3>
+
     <div className='witness-container'>
       <QandA name={"Witness #1"} info={witness1}/>
       <QandA name={"Witness #2"} info={witness2}/>

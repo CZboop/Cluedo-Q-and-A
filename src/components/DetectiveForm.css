@@ -32,15 +32,13 @@ h4{
     align-self: start;
 
 }
+
 .weapons-container{
     display: grid;
     align-self: start;
-
-
 }
+
 .rooms-container{
     display: grid;
     align-self: start;
-
-
 }
